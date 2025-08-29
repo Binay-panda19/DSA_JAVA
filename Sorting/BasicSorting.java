@@ -1,3 +1,5 @@
+package Sorting;
+
 public class BasicSorting {
 
   public static void BubbleSort(int num[]) {
