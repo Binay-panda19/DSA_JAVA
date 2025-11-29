@@ -110,6 +110,9 @@ public class RecursionBasics {
     if (n == 0) {
       return 1;
     }
+    if (n == 1) {
+      return x;
+    }
     // int halfPowerSq = Power2(x, n / 2) * Power2(x, n / 2); // O(n) not O(log n)
     int halfPower = Power2(x, n/2);
     int halfPowerSq = halfPower * halfPower //now it is O(log n)
