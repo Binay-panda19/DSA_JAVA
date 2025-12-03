@@ -248,6 +248,154 @@ public class LinkedList {
     return true;
   }
 
+  public static boolean isCycle() {
+    Node slow = head;
+    Node fast = head;
+
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (slow == fast) { // cycle exists
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public static void removeCycle() {
+
+    // detect cycle
+    Node slow = head;
+    Node fast = head;
+    boolean cycle = false;
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (slow == fast) {
+        cycle = true;
+        break;
+      }
+    }
+
+    if (!cycle) {
+      return;
+    }
+    // find meeting point
+    slow = head;
+    Node prev = null;
+    while (slow != fast) {
+      prev = fast;
+      slow = slow.next;
+      fast = fast.next;
+    }
+
+    // remove cycle -> last.next = null
+    prev.next = null;
+
+  }
+
+  private Node getMid(Node head) {
+    Node slow = head;
+    Node fast = head.next;
+
+    while (fast != null && fast.next != null) {
+      slow = slow.next; // +1
+      fast = fast.next.next; // +2
+    }
+
+    return slow; // slow is the mid
+  }
+
+  private Node merge(Node head1, Node head2) {
+    Node mergedList = new Node(-1);
+    Node temp = mergedList;
+
+    while (head1 != null && head2 != null) {
+      if (head1.data <= head2.data) {
+        temp.next = head1;
+        head1 = head1.next;
+        temp = temp.next;
+      } else {
+        temp.next = head2;
+        head2 = head2.next;
+        temp = temp.next;
+      }
+    }
+
+    while (head1 != null) {
+      temp.next = head1;
+      head1 = head1.next;
+      temp = temp.next;
+    }
+
+    while (head2 != null) {
+      temp.next = head2;
+      head2 = head2.next;
+      temp = temp.next;
+    }
+
+    return mergedList.next;
+  }
+
+  public Node mergeSort(Node head) {
+
+    if (head == null || head.next == null) {
+      return head;
+    }
+
+    // find mid
+    Node mid = getMid(head);
+
+    // left and right MS
+    Node rightHead = mid.next;
+    mid.next = null;
+    Node newLeft = mergeSort(head);
+    Node newRight = mergeSort(rightHead);
+
+    // merge
+    return merge(newLeft, newRight);
+  }
+
+  public void zigZag() {
+    // find mid
+    Node slow = head;
+    Node fast = head.next;
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    Node mid = slow;
+
+    // reverse 2nd half
+    Node curr = mid.next;
+    mid.next = null;
+    Node prev = null;
+    Node next;
+
+    while (curr != null) {
+      next = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = next;
+    }
+
+    Node left = head;
+    Node right = prev;
+    Node nextL, nextR;
+
+    // zig-zag merge
+    while (left != null && right != null) {
+      nextL = left.next;
+      left.next = right;
+      nextR = right.next;
+      right.next = nextL;
+      right = nextR;
+      left = nextL;
+    }
+
+  }
+
   public static void main(String[] args) {
     LinkedList ll = new LinkedList();
     // ll.head = new Node(1);
@@ -267,13 +415,39 @@ public class LinkedList {
 
     // System.out.println("size: " + ll.size);
 
+    // ll.addFirst(1);
+    // ll.addLast(2);
+    // ll.addLast(2);
+    // ll.addLast(1);
+
+    // ll.print();
+
+    // head = new Node(1);
+    // head.next = new Node(2);
+    // head.next.next = new Node(3);
+    // head.next.next.next = head;
+    // // ll.print();
+
+    // System.out.println(isCycle());
+    // removeCycle();
+    // System.out.println(isCycle());
+
+    // System.out.println(ll.checkPalindrome() ? "palindrome" : "not palindrome");
+
     ll.addFirst(1);
     ll.addLast(2);
-    ll.addLast(2);
-    ll.addLast(1);
+    ll.addLast(3);
+    ll.addLast(4);
+    ll.addLast(5);
+    ll.addLast(6);
 
-    ll.print();
+    // ll.print(); // 5-4-3-2-1-null
+    // ll.head = ll.mergeSort(head);
+    // ll.print(); // 1-2-3-4-5-null
 
-    System.out.println(ll.checkPalindrome() ? "palindrome" : "not palindrome");
+    ll.print(); // 1-2-3-4-5-6-null
+    ll.zigZag();
+    ll.print(); // 1-6-2-5-3-4-null
+
   }
 }
