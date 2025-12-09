@@ -44,11 +44,12 @@ public class Backtracking {
       return;
     }
 
+    // abc
     // recursion
     for (int i = 0; i < str.length(); i++) {
       char curr = str.charAt(i);
       // "abcde" => "ab" + "de" => "abde"
-      String newStr = str.substring(0, i) + str.substring(i + 1);
+      String newStr = str.substring(0, i) + str.substring(i + 1);  // "" + "bc"
       findPermutations(newStr, ans + curr);
     }
   }
@@ -194,7 +195,7 @@ public class Backtracking {
 
   public static void main(String[] args) {
     // int arr[] = new int[5];
-    // String st = "abc";
+    String st = "abc";
 
     // changeArr(arr, 0, 1);
     // printArr(arr);
@@ -215,23 +216,23 @@ public class Backtracking {
     // int n = 3, m = 3;
     // System.out.println(gridWays(0, 0, n, m));
 
-    int sudoku[][] = {
-        { 0, 0, 8, 0, 0, 0, 0, 0, 0 },
-        { 4, 9, 0, 1, 5, 7, 0, 0, 2 },
-        { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
-        { 1, 8, 5, 0, 6, 0, 0, 2, 0 },
-        { 0, 0, 0, 0, 2, 0, 0, 6, 0 },
-        { 9, 6, 0, 4, 0, 5, 0, 0, 0 },
-        { 0, 3, 0, 0, 7, 2, 0, 0, 4 },
-        { 0, 4, 9, 0, 3, 0, 0, 5, 7 },
-        { 8, 2, 7, 0, 0, 9, 0, 1, 3 }
-    };
+    // int sudoku[][] = {
+    // { 0, 0, 8, 0, 0, 0, 0, 0, 0 },
+    // { 4, 9, 0, 1, 5, 7, 0, 0, 2 },
+    // { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
+    // { 1, 8, 5, 0, 6, 0, 0, 2, 0 },
+    // { 0, 0, 0, 0, 2, 0, 0, 6, 0 },
+    // { 9, 6, 0, 4, 0, 5, 0, 0, 0 },
+    // { 0, 3, 0, 0, 7, 2, 0, 0, 4 },
+    // { 0, 4, 9, 0, 3, 0, 0, 5, 7 },
+    // { 8, 2, 7, 0, 0, 9, 0, 1, 3 }
+    // };
 
-    if (sudokuSolver(sudoku, 0, 0)) {
-      System.out.println("solution exists");
-      printSudoku(sudoku);
-    } else {
-      System.out.println("solution does not exists");
-    }
+    // if (sudokuSolver(sudoku, 0, 0)) {
+    // System.out.println("solution exists");
+    // printSudoku(sudoku);
+    // } else {
+    // System.out.println("solution does not exists");
+    // }
   }
 }
