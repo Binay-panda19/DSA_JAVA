@@ -136,6 +136,34 @@ public class JCFQueue {
     }
   }
 
+  public static void interLeave(Queue<Integer> q) {
+
+    int size = q.size();
+    Queue<Integer> first = new LinkedList<>();
+
+    for (int i = 0; i < size / 2; i++) {
+      first.add(q.remove());
+    }
+
+    while (!first.isEmpty()) {
+      q.add(first.remove());
+      q.add(q.remove());
+
+    }
+  }
+
+  public static void reverseQueue(Queue<Integer> q) {
+    Stack<Integer> s = new Stack<>();
+
+    while (!q.isEmpty()) {
+      s.push(q.remove());
+    }
+
+    while (!s.isEmpty()) {
+      q.add(s.pop());
+    }
+  }
+
   public static void main(String[] args) {
     // JCFQueue jcf = new JCFQueue();
     // Queue1 q = jcf.new Queue1();
@@ -160,8 +188,31 @@ public class JCFQueue {
     // s.pop();
     // }
 
-    String str = "aabccxb";
+    // String str = "aabccxb";
 
-    printNonRepeating(str);
+    // printNonRepeating(str);
+
+    Queue<Integer> q = new LinkedList<>();
+
+    q.add(1);
+    q.add(2);
+    q.add(3);
+    q.add(4);
+    q.add(5);
+    q.add(6);
+    q.add(7);
+    q.add(8);
+    q.add(9);
+    q.add(10);
+
+    // interLeave(q);
+
+    reverseQueue(q);
+
+    while (!q.isEmpty()) {
+      System.out.print(q.remove() + " ");
+    }
+    System.out.println();
+
   }
 }
