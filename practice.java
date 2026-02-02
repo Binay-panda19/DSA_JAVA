@@ -74,7 +74,7 @@ public class practice {
 
   public static void main(String[] args) {
 
-    int[][] grid = { { 9, 1, 7 }, { 8, 9, 2 }, { 3, 4, 6 } };
+    // int[][] grid = { { 9, 1, 7 }, { 8, 9, 2 }, { 3, 4, 6 } };
     int[] nums1 = { 1, 2, 3, 0, 0, 0 }, nums2 = { 2, 5, 6 };
     int m = 3, n = 3;
 

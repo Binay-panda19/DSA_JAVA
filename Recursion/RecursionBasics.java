@@ -1,5 +1,3 @@
-package Recursion;
-
 public class RecursionBasics {
 
   // print numbers from n to 1
@@ -114,8 +112,8 @@ public class RecursionBasics {
       return x;
     }
     // int halfPowerSq = Power2(x, n / 2) * Power2(x, n / 2); // O(n) not O(log n)
-    int halfPower = Power2(x, n/2);
-    int halfPowerSq = halfPower * halfPower //now it is O(log n)
+    int halfPower = Power2(x, n / 2);
+    int halfPowerSq = halfPower * halfPower; // now it is O(log n)
     if (n % 2 != 0) {
       halfPowerSq = x * halfPowerSq;
     }

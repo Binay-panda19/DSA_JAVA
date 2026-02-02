@@ -1,7 +1,5 @@
 import java.util.*;
 
-import org.w3c.dom.Node;
-
 public class Stacks {
 
   static class Stack1 {

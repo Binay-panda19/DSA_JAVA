@@ -49,7 +49,7 @@ public class Backtracking {
     for (int i = 0; i < str.length(); i++) {
       char curr = str.charAt(i);
       // "abcde" => "ab" + "de" => "abde"
-      String newStr = str.substring(0, i) + str.substring(i + 1);  // "" + "bc"
+      String newStr = str.substring(0, i) + str.substring(i + 1); // "" + "bc"
       findPermutations(newStr, ans + curr);
     }
   }
@@ -195,7 +195,7 @@ public class Backtracking {
 
   public static void main(String[] args) {
     // int arr[] = new int[5];
-    String st = "abc";
+    // String st = "abc";
 
     // changeArr(arr, 0, 1);
     // printArr(arr);

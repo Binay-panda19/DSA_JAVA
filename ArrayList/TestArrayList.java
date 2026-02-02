@@ -111,7 +111,7 @@ public class TestArrayList {
   }
 
   public static void main(String[] args) {
-    ArrayList<Integer> height = new ArrayList<>();
+    // ArrayList<Integer> height = new ArrayList<>();
     ArrayList<Integer> list = new ArrayList<>();
 
     // 1,8,6,2,5,4,8,3,7
