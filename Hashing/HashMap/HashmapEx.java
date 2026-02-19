@@ -1,13 +1,13 @@
-package HashMap;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 public class HashmapEx {
   public static void main(String[] args) {
 
     HashMap<String, Integer> hm = new HashMap<>();
-    LinkedHashMap<String, Integer> lhm = new LinkedHashMap();
-    TreeMap<String, Integer> tm = new TreeMap();
+    LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
+    TreeMap<String, Integer> tm = new TreeMap<>();
 
     // put - O(1)
     hm.put("India", 150);
@@ -48,7 +48,7 @@ public class HashmapEx {
     // System.out.println(hm.isEmpty());
 
     // iterations - O(1)
-    Set<String> keys = hm.keySet();
+    java.util.Set<String> keys = hm.keySet();
 
     for (String k : keys) {
       System.out.println("key=" + k + ",value=" + hm.get(k));
