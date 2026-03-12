@@ -34,6 +34,23 @@ public class ArraysCC {
     System.out.println("smallest:" + smallest);
   }
 
+  // reverse
+  public static void reverse(int[] arr) {
+
+    int left = 0;
+    int right = arr.length - 1;
+
+    while (left < right) {
+
+      int temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+
+      left++;
+      right--;
+    }
+  }
+
   // pairs
   public static void printPairs(int num[]) {
     for (int i = 0; i < num.length; i++) {
@@ -63,9 +80,45 @@ public class ArraysCC {
     System.out.println("total subarrays:" + ts);
   }
 
+  // kadane's algo
+  public int maxSubArray(int[] nums) {
+
+    int currentSum = nums[0];
+    int maxSum = nums[0];
+
+    for (int i = 1; i < nums.length; i++) {
+
+      currentSum = Math.max(nums[i], currentSum + nums[i]);
+      maxSum = Math.max(maxSum, currentSum);
+
+    }
+
+    return maxSum;
+  }
+
+  // where we change negative sum to zero
+  public int maxSubArray2(int[] nums) {
+
+    int maxSum = Integer.MIN_VALUE;
+    int currentSum = 0;
+
+    for (int num : nums) {
+
+      currentSum += num;
+
+      maxSum = currentSum > maxSum ? currentSum : maxSum;
+
+      currentSum = currentSum > 0 ? currentSum : 0;
+    }
+
+    return maxSum;
+  }
+
   // trapped rainwater
   public static void rainwater(int height[]) {
+
     int n = height.length;
+
     // auxiliary left max boundary
     int leftMax[] = new int[n];
     leftMax[0] = height[0];
@@ -78,9 +131,10 @@ public class ArraysCC {
     // auxiliary right max boundary
     for (int i = n - 2; i >= 0; i--) {
       rightMax[i] = Math.max(height[i], rightMax[i + 1]);
-
     }
+
     int trappedWater = 0;
+
     // loop
     for (int i = 0; i < n; i++) {
       int waterLevel = Math.min(leftMax[i], rightMax[i]);
