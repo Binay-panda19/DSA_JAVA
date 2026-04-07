@@ -1,6 +1,5 @@
-package Graphs;
-
 import java.util.*;
+import java.util.LinkedList;
 
 public class Graph1 {
   static class Edge {
@@ -46,8 +45,17 @@ public class Graph1 {
   }
 
   public static void bfs(ArrayList<Edge>[] graph) {
-    Queue<Integer> q = new LinkedList<>();
     boolean vis[] = new boolean[graph.length];
+
+    for (int i = 0; i < graph.length; i++) {
+      if (!vis[i]) {
+        bfsUtil(graph, vis);
+      }
+    }
+  }
+
+  public static void bfsUtil(ArrayList<Edge>[] graph, boolean vis[]) {
+    Queue<Integer> q = new LinkedList<>();
     q.add(0); // source = 0
 
     while (!q.isEmpty()) {
@@ -65,7 +73,17 @@ public class Graph1 {
 
   }
 
-  public static void dfs(ArrayList<Edge>[] graph, int curr, boolean[] vis) {
+  public static void dfs(ArrayList<Edge>[] graph) {
+    boolean vis[] = new boolean[graph.length];
+
+    for (int i = 0; i < graph.length; i++) {
+      if (!vis[i]) {
+        dfsUtil(graph, i, vis);
+      }
+    }
+  }
+
+  public static void dfsUtil(ArrayList<Edge>[] graph, int curr, boolean[] vis) {
     // visit
     System.out.print(curr + " ");
     vis[curr] = true;
@@ -73,7 +91,7 @@ public class Graph1 {
     for (int i = 0; i < graph[curr].size(); i++) {
       Edge e = graph[curr].get(i);
       if (!vis[e.dest]) {
-        dfs(graph, e.dest, vis); // for neighbours
+        dfsUtil(graph, e.dest, vis); // for neighbours
       }
     }
 
