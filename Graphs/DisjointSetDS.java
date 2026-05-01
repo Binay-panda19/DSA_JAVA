@@ -134,6 +134,7 @@ public class DisjointSetDS {
     ArrayList<Edge> edges = new ArrayList<>();
     createGraph(edges);
 
-    kruskals(edges, V);
+    // kruskals(edges, V);
+
   }
 }
